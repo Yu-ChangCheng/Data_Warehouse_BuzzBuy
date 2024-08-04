@@ -1,0 +1,72 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">District with Highest Volume for each Category</h1>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <!-- Form for year and month selection -->
+            <form action="/district-volume" method="GET" class="mb-4">
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <label class="sr-only" for="year">Year</label>
+                        <select class="form-control mb-2" id="year" name="year" required>
+                            <option value="" disabled selected>Select Year</option>
+                            <% const currentYear = new Date().getFullYear(); %>
+                            <% for (let i = 2010; i <= currentYear; i++) { %>
+                                <option value="<%= i %>" <%= i === parseInt(selectedYear) ? 'selected' : '' %>><%= i %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label class="sr-only" for="month">Month</label>
+                        <select class="form-control mb-2" id="month" name="month" required>
+                            <option value="" disabled selected>Select Month</option>
+                            <% for (let i = 1; i <= 12; i++) { %>
+                                <option value="<%= i %>" <%= i === parseInt(selectedMonth) ? 'selected' : '' %>><%= i %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-dark mb-2">Submit</button>
+                    </div>
+                    <div class="col-auto ml-auto text-right">
+                        <% if (selectedYear && selectedMonth) { %>
+                            <h5 class="mb-2">Report Date: <%= ("0" + selectedMonth).slice(-2) %>/<%= selectedYear %></h5>
+                        <% } %>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Table to display the report -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Category Name ↑</th>
+                        <th>District Number</th>
+                        <th>Total Units Sold</th>
+                        <th>District Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% district_volume_report.forEach(function(vol) { %>
+                        <tr>
+                            <td><%= vol.category_name %></td>
+                            <td><%= vol.district_number %></td>
+                            <td><%= vol.total_units_sold %></td>
+                            <td>
+                                <a href="/district-details?year=<%= selectedYear %>&month=<%= selectedMonth %>&district=<%= vol.district_number %>&category=<%= vol.category_name %>" class="btn btn-dark mb-2">Details</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <div class="mt-4">
+                <a href="/menu" class="btn btn-danger">Exit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

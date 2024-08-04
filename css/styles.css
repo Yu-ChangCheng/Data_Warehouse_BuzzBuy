@@ -14,3 +14,9 @@ body {
   color: #fff;
   background-color: #000;
 }
+
+td, th, tr {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: darkblue;
+}

@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+      <h1 class="display-4">Manufacturer Report</h1>
+    </div>
+    <div class="card">
+        </div>
+        <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Manufacturer Name</th>
+                    <th>Total number of products offered by each manufacturer</th>
+                    <th>Average retail price of all the manufacturer's products ↓</th>
+                    <th>Minimum retail price for each manufacturer</th>
+                    <th>Maximum retail price for each manufacturer</th>
+                    <th>Product Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% mfg_report.forEach(function(mfg) { %>
+                    <tr>
+                        <td><%= mfg.manufacturer_name %></td>
+                        <td><%= mfg.number_of_products %></td>
+                        <td>$ <%= mfg.avg_price %></td>
+                        <td>$ <%= mfg.max_price %></td>
+                        <td>$ <%= mfg.min_price  %></td>
+                        <td>
+                            <a href="/manufacturer-details?manufacturer=<%= mfg.manufacturer_name %>" class="btn btn-dark mb-2">Details</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+          </table>
+          <div class="mt-4">
+            <a href="/menu" class="btn btn-danger">Exit</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<%- include('partials/footer') %>

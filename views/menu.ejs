@@ -22,12 +22,12 @@
           <a href="/gps-revenue" class="list-group-item list-group-item-action">Actual versus Predicted Revenue for GPS units</a>
           <a href="/groundhog-day" class="list-group-item list-group-item-action">Air Conditioners on Groundhog Day?</a>
         <% } %>
-        <% const userHasAllDistricts = true; if (userHasAllDistricts) { %> <!-- To Do -->
+        <% if (corp_em) { %> 
           <a href="/store-revenue" class="list-group-item list-group-item-action">Store Revenue by Year by State</a>
           <a href="/district-volume" class="list-group-item list-group-item-action">District with Highest Volume for Each Category</a>
           <a href="/revenue-population" class="list-group-item list-group-item-action">Revenue by Population</a>
         <% } %>
-        <% const userHasAuditFlag = true; if (userHasAuditFlag) { %> <!-- To Do -->
+        <% if (audit_access) { %> 
           <a href="/audit-log" class="list-group-item list-group-item-action">View Audit Log</a>
         <% } %>
       </div>

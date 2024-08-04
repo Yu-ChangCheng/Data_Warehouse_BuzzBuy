@@ -1,0 +1,91 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Holidays</h1>
+    </div>
+    <div class="card">
+        
+        <div class="card-body">
+
+            <!-- Add Holiday Button for users with access to all districts -->
+            <% if (corp_em) { %>
+                <button type="button" class="btn btn-dark mb-2" data-toggle="modal" data-target="#addHolidayModal">Add Holiday</button> 
+            <% } %>
+            <!-- Success Message -->
+            <div class="alert alert-success" role="alert" style="display: <% if (locals.success) { %>block<% } else { %>none<% } %>;">
+                <% if (locals.success) { %><%= success %><% } %>
+            </div>
+
+            <!-- Error Message -->
+            <div class="alert alert-danger" role="alert" style="display: <% if (locals.error) { %>block<% } else { %>none<% } %>;">
+                <% if (locals.error) { %><%= error %><% } %>
+            </div>
+
+
+            <!-- Table to display holidays -->
+            <table class="table mt-4">
+                <thead>
+                    <tr>
+                        <th>Holiday Date ↑</th>
+                        <th>Holiday Name</th>
+                        <th>Created by</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% holidays.forEach(function(holiday) { %>
+                        <% if (holiday.holiday_date) { %>
+                            <% let date = new Date(holiday.holiday_date); %>
+                            <% let hol_date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2); %>
+                            <tr>
+                                <td><%= hol_date %></td>
+                                <td><%= holiday.holiday_name %></td>
+                                <td><%= holiday.created_by %></td>
+                            </tr>
+                        <% } %>
+                    <% }); %>
+                </tbody>
+            </table>
+
+            <!-- Exit Button -->
+            <div class="mt-4">
+                <a href="/menu" class="btn btn-danger">Exit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Adding Holiday -->
+<div class="modal fade" id="addHolidayModal" tabindex="-1" role="dialog" aria-labelledby="addHolidayModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/add-holiday" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addHolidayModalLabel">Add Holiday</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="form-group">
+                        <label for="holidayDate">Holiday Date</label>
+                        <input type="date" class="form-control" id="holidayDate" name="holidayDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="holidayName">Holiday Name</label>
+                        <input type="text" class="form-control" id="holidayName" name="holidayName" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add Holiday</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('partials/footer') %>

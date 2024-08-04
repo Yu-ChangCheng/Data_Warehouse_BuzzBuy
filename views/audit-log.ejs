@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+
+<style>
+    .true{ background-color: yellow;}
+</style>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+      <h1 class="display-4">Audit Log</h1>
+    </div>
+    <div class="card">
+
+        </div>
+
+        <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Time Stamp</th>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Report Name</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% audit_log_report.forEach(function(adt) { %>
+                    <tr class=<%= adt.all_access %> >
+                        <td><%= adt.log_time %></td>
+                        <td><%= adt.employee_id %></td>
+                        <td><%= adt.user_name %></td>
+                        <td><%= adt.report_name %></td>
+                    </tr>
+
+                <% }); %>
+            </tbody>
+          </table>
+          <div class="mt-4">
+            <a href="/menu" class="btn btn-danger">Exit</a>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<%- include('partials/footer') %>
+

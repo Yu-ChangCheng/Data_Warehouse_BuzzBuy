@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Store Details in District <%= district %> </h1>
+        <h2 > at <%= selectedYear %> / <%= selectedMonth %> for <%= category %> </h2>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <!-- Table to display the store details -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Store Number ↑</th>
+                        <th>Address</th>
+                        <th>State</th>
+                        <th>City Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% details.forEach(function(detail) { %>
+                        <tr>
+                            <td><%= detail.store_number %></td>
+                            <td><%= detail.address %></td>
+                            <td><%= detail.state_loc %></td>
+                            <td><%= detail.city_name %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <div class="mt-4">
+                <a href="/district-volume?year=<%= selectedYear %>&month=<%= selectedMonth %>" class="btn btn-danger">Back to Report</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

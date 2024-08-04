@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+      <h1 class="display-4">Air Conditioners on Groundhog Day?</h1>
+    </div>
+    <div class="card">
+        </div>
+        <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 10%">Year ↑</th>
+                    <th>Count of products in the Air Conditioning category sold</th>
+                    <th>Average number of Air Conditioning category products sold per day</th>
+                    <th>Total number of Air Conditioning category products sold on Feb 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% ghd_report.forEach(function(ghd) { %>
+                    <tr>
+                        <td><%= ghd.sa_year %></td>
+                        <td><%= ghd.annual_sales %></td>
+                        <td><%= ghd.daily_sales %></td>
+                        <td><%= ghd.groundhog_day_sales %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+          </table>
+          <div class="mt-4">
+            <a href="/menu" class="btn btn-danger">Exit</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<%- include('partials/footer') %>

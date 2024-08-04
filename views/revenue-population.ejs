@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+      <h1 class="display-4">Average Revenue by Population</h1>
+    </div>
+    <div class="card">
+        </div>
+        <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Year ↑</th>
+                    <th>Small City</th>
+                    <th>Medium City</th>
+                    <th>Large City</th>
+                    <th>Extra Large City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% rev_pop_report.forEach(function(rev) { %>
+                    <tr>
+                        <td><%= rev.report_year %></td>
+                        <td>$ <%= rev.small %></td>
+                        <td>$ <%= rev.medium %></td>
+                        <td>$ <%= rev.large %></td>
+                        <td>$ <%= rev.extra_large %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+          </table>
+          <div class="mt-4">
+            <a href="/menu" class="btn btn-danger">Exit</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<%- include('partials/footer') %>

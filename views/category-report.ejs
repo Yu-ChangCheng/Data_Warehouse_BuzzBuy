@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+      <h1 class="display-4">Category Report</h1>
+    </div>
+    <div class="card">
+        </div>
+        <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 20%">Category Name ↑</th>
+                    <th style="width: 20%">Total number of products</th>
+                    <th style="width: 30%">Total number of manufacturers offering products</th>
+                    <th style="width: 30%">The average retail price (not including discount days) of all the products</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cat_report.forEach(function(cat) { %>
+                    <tr>
+                        <td><%= cat.category_name %></td>
+                        <td><%= cat.number_of_products %></td>
+                        <td><%= cat.number_of_manufacturers %></td>
+                        <td>$ <%= cat.avg_price %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+          </table>
+          <div class="mt-4">
+            <a href="/menu" class="btn btn-danger">Exit</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<%- include('partials/footer') %>

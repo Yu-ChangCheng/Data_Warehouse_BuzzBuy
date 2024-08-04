@@ -8,7 +8,7 @@
     <div class="col-sm-8">
       <div class="card">
         <div class="card-body">
-
+          
           <!-- Makes POST request to /login route -->
           <form action="/login" method="POST">
             <div class="form-group">
@@ -19,6 +19,11 @@
               <label for="password">Password</label>
               <input type="password" class="form-control" name="password">
             </div>
+            <% if (locals.error) { %>
+              <div class="alert alert-danger" role="alert">
+                <%= error %>
+              </div>
+            <% } %>
             <button type="submit" class="btn btn-dark">Login</button>
           </form>
 
