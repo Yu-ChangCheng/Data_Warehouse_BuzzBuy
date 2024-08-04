@@ -11,7 +11,7 @@ const db = new pg.Client({
   host: "localhost",
   database: "BuzzBuy Data Warehouse",
   password: "0000",
-  port: 5433,
+  port: 5432,
 });
 db.connect();
 
