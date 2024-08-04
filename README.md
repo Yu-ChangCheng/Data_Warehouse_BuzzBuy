@@ -5,6 +5,12 @@ Relational Database Design built with NodeJS, ExpressJS, HTML/ CSS, Bootstrap, P
 ## Spec: BuzzBuy Data Warehouse-1.0.1.pdf
 [View Spec Document](BuzzBuy%20Data%20Warehouse-1.0.1.pdf)
 
+## EER Diagram
+[View EER Diagram](/Docs/team025_p2_updatedEER.pdf)
+
+## Design + SQL Doc
+[View Design + SQL Document](/Docs/team025_p2_ac+SQL.pdf)
+
 ## Demo Video
 [Watch Demo Video](https://youtu.be/JYbA1fEwFUc)
 
