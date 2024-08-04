@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h1 class="display-4">Main Menu</h1>
+    <% if (user) { %>
+      <p class="secret-text">Welcome, <%= user.name %></p>
+    <% } else { %>
+      <p class="lead">Welcome to the menu!</p>
+    <% } %>
+  </div>
+
+  <div class="row">
+    <!-- Main Content Area with Reports -->
+    <div class="col-md-9">
+      <h2>Reports:</h2>
+      <div class="list-group">
+        <a href="/holidays" class="list-group-item list-group-item-action">View Holidays</a>
+        <a href="/manufacturer-report" class="list-group-item list-group-item-action">Manufacturer's Product Report</a>
+        <a href="/category-report" class="list-group-item list-group-item-action">Category Report</a>
+        <% const userHasDistricts = true; if (userHasDistricts) { %>    <!-- To Do -->
+          <a href="/gps-revenue" class="list-group-item list-group-item-action">Actual versus Predicted Revenue for GPS units</a>
+          <a href="/groundhog-day" class="list-group-item list-group-item-action">Air Conditioners on Groundhog Day?</a>
+        <% } %>
+        <% const userHasAllDistricts = true; if (userHasAllDistricts) { %> <!-- To Do -->
+          <a href="/store-revenue" class="list-group-item list-group-item-action">Store Revenue by Year by State</a>
+          <a href="/district-volume" class="list-group-item list-group-item-action">District with Highest Volume for Each Category</a>
+          <a href="/revenue-population" class="list-group-item list-group-item-action">Revenue by Population</a>
+        <% } %>
+        <% const userHasAuditFlag = true; if (userHasAuditFlag) { %> <!-- To Do -->
+          <a href="/audit-log" class="list-group-item list-group-item-action">View Audit Log</a>
+        <% } %>
+      </div>
+
+      <div class="mt-4">
+        <a href="/logout" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+
+    <!-- Sidebar with Table Counts -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header text-center">
+          Table Counts
+        </div>
+        <ul class="list-group list-group-flush">
+          <% tableCounts.forEach(function(table) { %>
+            <li class="list-group-item"><%= table.tablename %>: <%= table.tablecount %></li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
