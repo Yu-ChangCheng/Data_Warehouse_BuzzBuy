@@ -3,9 +3,14 @@
 Relational Database Design built with NodeJS, ExpressJS, HTML/ CSS, Bootstrap, PostgreSQL implementation
 
 **Screenshots of the application**:
-    - ![Login Page] (/Image/Login.png)
-    - ![Menu] (/Image/Main_Menu.png)
-    - ![State Revenue Report] (/Image/State_Revenue.png)
+### Login Page
+![Login Page](Image/Login.png)
+
+### Main Menu
+![Main Menu](Image/Main_Menu.png)
+
+### State Revenue
+![State Revenue](Image/State_Revenue.png)
     
 ## Spec: BuzzBuy Data Warehouse-1.0.1.pdf
 [View Spec Document](BuzzBuy%20Data%20Warehouse-1.0.1.pdf)
